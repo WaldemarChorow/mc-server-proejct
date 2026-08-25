@@ -1,0 +1,23 @@
+services:
+  mc-server:
+    build: .
+    container_name: mc-server
+    restart: unless-stopped
+    ports:
+      - "${MC_PORT:-8888}:25565"
+    environment:
+      JAVA_MIN_MEM: ${MC_MEMORY_MIN:-1G}
+      JAVA_MAX_MEM: ${MC_MEMORY_MAX:-2G}
+      MC_MOTD: ${MC_MOTD:-A Minecraft Server}
+      MC_DIFFICULTY: ${MC_DIFFICULTY:-easy}
+      MC_GAMEMODE: ${MC_GAMEMODE:-survival}
+      MC_MAX_PLAYERS: ${MC_MAX_PLAYERS:-20}
+      MC_ONLINE_MODE: ${MC_ONLINE_MODE:-true}
+      MC_PVP: ${MC_PVP:-true}
+      MC_VIEW_DISTANCE: ${MC_VIEW_DISTANCE:-10}
+      MC_LEVEL_NAME: ${MC_LEVEL_NAME:-world}
+    volumes:
+      - mc_data:/data
+
+volumes:
+  mc_data:

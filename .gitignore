@@ -1,0 +1,18 @@
+# Environment
+.env
+!.env.example
+
+# Minecraft server binary (not redistributable, downloaded during setup)
+/server.jar
+
+# Minecraft runtime data (only created when run outside Docker)
+world/
+logs/
+crash-reports/
+server.properties
+eula.txt
+usercache.json
+ops.json
+whitelist.json
+banned-ips.json
+banned-players.json
