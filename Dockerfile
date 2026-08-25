@@ -1,10 +1,10 @@
 FROM eclipse-temurin:25-jre
 
-ARG MC_VERSION
-ARG MC_SERVER_URL
+ENV JAVA_MIN_MEM=2G
+ENV JAVA_MAX_MEM=4G
 
 WORKDIR /app
-RUN curl -fsSL -o server.jar "${MC_SERVER_URL}"
+COPY server.jar .
 
 EXPOSE 25565
 
