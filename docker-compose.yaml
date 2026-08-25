@@ -12,7 +12,7 @@ services:
       JAVA_MIN_MEM: ${MC_MEMORY_MIN:-2G}
       JAVA_MAX_MEM: ${MC_MEMORY_MAX:-4G}
     volumes:
-      - mc_data:/app
+      - mc_data:/data
 
 volumes:
   mc_data:

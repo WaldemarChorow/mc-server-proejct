@@ -1,12 +1,19 @@
+.env
 *.env
+!.env.example
 
 # Minecraft Server files
 world/
+world_nether/
+world_the_end/
 logs/
 crash-reports/
-*.json
-*.properties
+server.properties
+eula.txt
+usercache.json
 banned-ips.json
 banned-players.json
 ops.json
 whitelist.json
+
+/server.jar

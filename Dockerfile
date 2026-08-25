@@ -1,13 +1,14 @@
-FROM eclipse-temurin:21-jre
+FROM eclipse-temurin:25-jre
+
+ARG MC_VERSION
+ARG MC_SERVER_URL
 
 WORKDIR /app
-
-COPY server.jar .
-
-# Automatically accept Minecraft EULA
-RUN echo "eula=true" > eula.txt
+RUN curl -fsSL -o server.jar "${MC_SERVER_URL}"
 
 EXPOSE 25565
 
-# Start script using curly braces for environment variables
-CMD ["sh", "-c", "java -Xms${JAVA_MIN_MEM} -Xmx${JAVA_MAX_MEM} -jar server.jar nogui"]
+WORKDIR /data
+RUN echo "eula=true" > eula.txt
+
+CMD ["sh", "-c", "java -Xms${JAVA_MIN_MEM} -Xmx${JAVA_MAX_MEM} -jar /app/server.jar nogui"]
