@@ -1,0 +1,18 @@
+services:
+  mc-server:
+    build:
+      context: .
+      args:
+        MC_VERSION: ${MC_VERSION:-26.2}
+    container_name: mc-server
+    restart: unless-stopped
+    ports:
+      - "${MC_PORT:-8888}:25565"
+    environment:
+      JAVA_MIN_MEM: ${MC_MEMORY_MIN:-2G}
+      JAVA_MAX_MEM: ${MC_MEMORY_MAX:-4G}
+    volumes:
+      - mc_data:/app
+
+volumes:
+  mc_data:
